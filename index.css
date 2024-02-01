@@ -1,0 +1,367 @@
+@font-face {
+    font-family: inter;
+    src: url(./Inter-Regular.ttf);
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+    font-family: inter;
+}
+
+body {
+    background-image: url("https://i.postimg.cc/h4NrBQHg/bg.webp");
+}
+
+
+
+
+
+/* Custom css */
+
+.login_screen {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_box {
+    width: 400px;
+    height: auto;
+    padding: 100px 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255, 0.7);
+}
+
+.login_box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login_box label {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.login_box input {
+    border: 0;
+    border-radius: 5px;
+    margin: 40px 0;
+    padding: 15px 10px;
+    font-size: 16px;
+    background-color: transparent;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255);
+}
+
+.login_box input:hover {
+    background-color: white;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.login_box input:active {
+    background-color: white;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.login_box input:focus {
+    background-color: white;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.login_box button {
+    width: max-content;
+    border: 0;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+
+    background-color: rgb(255, 255, 255, 0.5);
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.login_box button:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    margin: 0 auto;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.error_message {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+.chat_app_wrapper {
+    width: 700px;
+    margin: 0 auto;
+    height: 100vh;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+
+    background-color: rgb(255, 255, 255, 0.7);
+    display: none;
+}
+
+.chat_top_bar {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid black;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat_top_bar img {
+    width: 40px;
+    margin: 20px;
+}
+
+.chat_top_bar span {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 20px;
+    color: #0055cc !important;
+}
+
+#delete_all_message_button {
+    display: none;
+    margin: 0 20px 0 0;
+    border: 0;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+
+.chatting_playground {
+    width: 100%;
+    height: auto;
+}
+
+.chat_box {
+    width: 100%;
+    padding: 0px 20px;
+    overflow: hidden;
+    height: calc(100vh - 135px);
+}
+
+
+.message_form {
+    width: 100%;
+}
+
+.message_form form {
+    width: 100%;
+    display: flex;
+    padding: 0px 20px;
+}
+
+.message_form form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 5px;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgb(255, 255, 255);
+}
+
+.message_form input:hover {
+    background-color: white;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.message_form input:active {
+    background-color: white;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.message_form input:focus {
+    background-color: white;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.message_form form button {
+    width: 150px;
+    margin: 0 0 0 20px;
+    border: 0;
+    cursor: pointer;
+
+    background-color: white;
+    border-radius: 5px;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+
+.message_box {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+}
+
+.messge_container {
+    width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.empty {
+    width: 30%;
+}
+
+.msj_person {
+    font-size: 20px;
+    color: rgb(0, 0, 0, 0.8);
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.color_one {
+    background-color: #a0ed6f;
+}
+
+.color_Two {
+    background-color: #f29b18;
+}
+
+.color_three {
+    background-color: #80dfff;
+}
+
+/* Custom css */
