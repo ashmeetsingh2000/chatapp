@@ -30,11 +30,19 @@ login_form.addEventListener('submit', (event) => {
         async function postData(url) {
             try {
                 const response = await fetch(url, {
+                    keepalive: true,
                     method: "POST",
                     mode: "cors",
                     headers: {
-                        "Content-Type": "application/json",
+                        "Content-Type": "application/json;charset=UTF-8",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
                     },
+                    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: "same-origin", // include, *same-origin, omit
+                    redirect: "follow", // manual, *follow, error
+                    referrerPolicy: "no-referrer",
+
                     body: JSON.stringify({
                         username: {
                             name: `${user_NAME}`
@@ -48,7 +56,8 @@ login_form.addEventListener('submit', (event) => {
             }
         }
 
-        postData(`https://chat-app-server-virid.vercel.app/login`).then((data) => {
+        postData(`http://localhost:5000/login`).then((data) => {
+            // postData(`https://chat-app-server-virid.vercel.app/login`).then((data) => {
 
             if (data.res == 'ok') {
 
@@ -88,10 +97,18 @@ function get_all_messages() {
         try {
             const response = await fetch(url, {
                 method: "GET",
+                keepalive: true,
                 mode: "cors",
                 headers: {
-                    "Content-Type": "application/json",
-                }
+                    "Content-Type": "application/json;charset=UTF-8",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
+                },
+                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: "same-origin", // include, *same-origin, omit
+                redirect: "follow", // manual, *follow, error
+                referrerPolicy: "no-referrer",
+
             });
             return response.json();
         }
@@ -100,7 +117,7 @@ function get_all_messages() {
         }
     }
 
-    get_previous_chats(`https://chat-app-server-virid.vercel.app/msj`).then((res) => {
+    get_previous_chats(`http://localhost:5000/msj`).then((res) => {
         let prev_data = res.chat_data;
 
         if (prev_data.length == 0) {
@@ -165,10 +182,17 @@ function start_tracking_messages() {
         try {
             const response = await fetch(url, {
                 method: "POST",
+                keepalive: true,
                 mode: "cors",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json;charset=UTF-8",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
                 },
+                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: "same-origin", // include, *same-origin, omit
+                redirect: "follow", // manual, *follow, error
+                referrerPolicy: "no-referrer",
                 body: JSON.stringify({
                     key: prev_key
                 })
@@ -180,7 +204,7 @@ function start_tracking_messages() {
         }
     }
 
-    get_updated_messages(`https://chat-app-server-virid.vercel.app/current`).then((res) => {
+    get_updated_messages(`http://localhost:5000/current`).then((res) => {
 
         console.log(res)
 
@@ -242,10 +266,17 @@ send_new_message.addEventListener('submit', (event) => {
             prev_key += 1
             const response = await fetch(url, {
                 method: "POST",
+                keepalive: true,
                 mode: "cors",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json;charset=UTF-8",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
                 },
+                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: "same-origin", // include, *same-origin, omit
+                redirect: "follow", // manual, *follow, error
+                referrerPolicy: "no-referrer",
                 body: JSON.stringify({
                     msj_data: {
                         name: user_NAME,
@@ -261,7 +292,7 @@ send_new_message.addEventListener('submit', (event) => {
         }
     }
 
-    postData(`https://chat-app-server-virid.vercel.app/add_msj`).then((data) => { })
+    postData(`http://localhost:5000/add_msj`).then((data) => { })
     message.value = ''
 
 })
@@ -270,10 +301,10 @@ send_new_message.addEventListener('submit', (event) => {
 
 // ====================== [ Delete All Messages ] =======================
 function delete_all_current_messages() {
-    fetch('https://chat-app-server-virid.vercel.app/delete', {
+    fetch('http://localhost:5000/delete', {
         method: 'DELETE',
     })
         .then(res => res.json())
-        .then(res => alert(res.msj))
+        .then(res => { alert(res.msj); location.reload(); })
 }
 // ====================== [ Delete All Messages ] =======================
