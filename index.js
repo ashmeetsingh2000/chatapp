@@ -14,7 +14,6 @@ var chat_msj_box = document.getElementById('chat_msj_box');
 
 var send_new_message = document.getElementById('send_new_message');
 var message = document.getElementById('message');
-// var first_name = document.getElementById('username');message
 // ======================= [Elements Container ] ========================
 
 
@@ -34,7 +33,7 @@ login_form.addEventListener('submit', (event) => {
                     method: "POST",
                     mode: "cors",
                     headers: {
-                        "Content-Type": "application/json;charset=UTF-8",
+                        "Content-Type": "application/json",
                         "Access-Control-Allow-Origin": "*",
                     },
 
@@ -51,9 +50,8 @@ login_form.addEventListener('submit', (event) => {
             }
         }
 
+        // postData(`http://localhost:5000/login`).then((data) => {
         postData(`https://chat-app-server-virid.vercel.app/login`).then((data) => {
-            // postData(`https://chat-app-server-virid.vercel.app/login`).then((data) => {
-
             if (data.res == 'ok') {
 
                 login_contianer.style.display = 'none'
@@ -97,11 +95,7 @@ function get_all_messages() {
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8",
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
                 },
-                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: "same-origin", // include, *same-origin, omit
-                redirect: "follow", // manual, *follow, error
                 referrerPolicy: "no-referrer",
 
             });
@@ -182,12 +176,7 @@ function start_tracking_messages() {
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8",
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
                 },
-                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: "same-origin", // include, *same-origin, omit
-                redirect: "follow", // manual, *follow, error
-                referrerPolicy: "no-referrer",
                 body: JSON.stringify({
                     key: prev_key
                 })
@@ -266,12 +255,7 @@ send_new_message.addEventListener('submit', (event) => {
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8",
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
                 },
-                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: "same-origin", // include, *same-origin, omit
-                redirect: "follow", // manual, *follow, error
-                referrerPolicy: "no-referrer",
                 body: JSON.stringify({
                     msj_data: {
                         name: user_NAME,
