@@ -51,7 +51,7 @@ login_form.addEventListener('submit', (event) => {
             }
         }
 
-        postData(`http://localhost:5000/login`).then((data) => {
+        postData(`https://chat-app-server-virid.vercel.app/login`).then((data) => {
             // postData(`https://chat-app-server-virid.vercel.app/login`).then((data) => {
 
             if (data.res == 'ok') {
@@ -112,7 +112,7 @@ function get_all_messages() {
         }
     }
 
-    get_previous_chats(`http://localhost:5000/msj`).then((res) => {
+    get_previous_chats(`https://chat-app-server-virid.vercel.app/msj`).then((res) => {
         let prev_data = res.chat_data;
 
         if (prev_data.length == 0) {
@@ -199,7 +199,7 @@ function start_tracking_messages() {
         }
     }
 
-    get_updated_messages(`http://localhost:5000/current`).then((res) => {
+    get_updated_messages(`https://chat-app-server-virid.vercel.app/current`).then((res) => {
 
         console.log(res)
 
@@ -287,7 +287,7 @@ send_new_message.addEventListener('submit', (event) => {
         }
     }
 
-    postData(`http://localhost:5000/add_msj`).then((data) => { })
+    postData(`https://chat-app-server-virid.vercel.app/add_msj`).then((data) => { })
     message.value = ''
 
 })
@@ -296,7 +296,7 @@ send_new_message.addEventListener('submit', (event) => {
 
 // ====================== [ Delete All Messages ] =======================
 function delete_all_current_messages() {
-    fetch('http://localhost:5000/delete', {
+    fetch('https://chat-app-server-virid.vercel.app/delete', {
         method: 'DELETE',
     })
         .then(res => res.json())
