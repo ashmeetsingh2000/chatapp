@@ -36,12 +36,7 @@ login_form.addEventListener('submit', (event) => {
                     headers: {
                         "Content-Type": "application/json;charset=UTF-8",
                         "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
                     },
-                    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                    credentials: "same-origin", // include, *same-origin, omit
-                    redirect: "follow", // manual, *follow, error
-                    referrerPolicy: "no-referrer",
 
                     body: JSON.stringify({
                         username: {
