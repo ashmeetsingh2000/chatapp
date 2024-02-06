@@ -53,6 +53,8 @@ login_form.addEventListener('submit', (event) => {
         postData(`http://127.0.0.1:5000/login`).then((data) => {
             if (data.res == 'ok') {
 
+                document.title = `${user_NAME}`;
+
                 login_contianer.style.display = 'none'
                 chat_app_wrapper.style.display = 'block'
 
@@ -190,8 +192,6 @@ function start_tracking_messages() {
     }
 
     get_updated_messages(`http://127.0.0.1:5000/current`).then((res) => {
-
-        console.log(res)
 
         let prev_data = res.chat_data;
 
