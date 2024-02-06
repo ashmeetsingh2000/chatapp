@@ -50,8 +50,7 @@ login_form.addEventListener('submit', (event) => {
             }
         }
 
-        // postData(`http://localhost:5000/login`).then((data) => {
-        postData(`https://chat-app-server-virid.vercel.app/login`).then((data) => {
+        postData(`http://localhost:5000/login`).then((data) => {
             if (data.res == 'ok') {
 
                 login_contianer.style.display = 'none'
@@ -106,7 +105,7 @@ function get_all_messages() {
         }
     }
 
-    get_previous_chats(`https://chat-app-server-virid.vercel.app/msj`).then((res) => {
+    get_previous_chats(`http://localhost:5000/msj`).then((res) => {
         let prev_data = res.chat_data;
 
         if (prev_data.length == 0) {
@@ -154,6 +153,8 @@ function get_all_messages() {
             prev_key = prev_data[prev_data.length - 1].key;
 
             chat_msj_box.innerHTML = prev_messages;
+
+            scrollToBottom('chat_msj_box')
         }
 
         start_tracking_messages()
@@ -188,7 +189,7 @@ function start_tracking_messages() {
         }
     }
 
-    get_updated_messages(`https://chat-app-server-virid.vercel.app/current`).then((res) => {
+    get_updated_messages(`http://localhost:5000/current`).then((res) => {
 
         console.log(res)
 
@@ -229,6 +230,7 @@ function start_tracking_messages() {
                                     `
             }
             chat_msj_box.append(newDiv);
+            scrollToBottom('chat_msj_box')
 
         });
 
@@ -271,7 +273,7 @@ send_new_message.addEventListener('submit', (event) => {
         }
     }
 
-    postData(`https://chat-app-server-virid.vercel.app/add_msj`).then((data) => { })
+    postData(`http://localhost:5000/add_msj`).then((data) => { })
     message.value = ''
 
 })
@@ -280,10 +282,18 @@ send_new_message.addEventListener('submit', (event) => {
 
 // ====================== [ Delete All Messages ] =======================
 function delete_all_current_messages() {
-    fetch('https://chat-app-server-virid.vercel.app/delete', {
+    fetch('http://localhost:5000/delete', {
         method: 'DELETE',
     })
         .then(res => res.json())
         .then(res => { alert(res.msj); location.reload(); })
 }
 // ====================== [ Delete All Messages ] =======================
+
+
+
+
+const scrollToBottom = (id) => {
+    const element = document.getElementById(id);
+    element.scrollTop = element.scrollHeight;
+}
